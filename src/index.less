@@ -1,0 +1,58 @@
+.command-menu {
+  background: #fff;
+  box-shadow: 0 1px 4px -2px rgb(0 0 0 / 13%), 0 2px 8px 0px rgb(0 0 0 / 8%), 0 8px 16px 4px rgb(0 0 0 / 4%);
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+  flex-direction: column;
+  width: 500px;
+
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  z-index: 2;
+
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+
+  .command-menu-content {
+
+    display: grid;
+    padding: 4px;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(10, 36px);
+    height: 200px;
+
+    .command-menu-item {
+      text-align: left;
+      padding: 2px;
+      line-height: 1.8;
+      color: #595959;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 6px;
+      user-select: none;
+      font-size: 14px;
+
+      .icon {
+        margin-right: 6px;
+        vertical-align: text-top;
+      }
+
+      &.selected,
+      &:hover {
+        ._item {
+          background-color: #F5F5F5;
+          cursor: pointer;
+        }
+      }
+
+      ._item {
+        padding: 4px 4px 4px 10px;
+      }
+    }
+  }
+}

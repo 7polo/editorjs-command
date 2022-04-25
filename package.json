@@ -1,0 +1,35 @@
+{
+  "name": "@7polo/editorjs-command",
+  "version": "0.0.2",
+  "keywords": [
+    "codex editor",
+    "paragraph",
+    "tool",
+    "editor.js",
+    "editorjs"
+  ],
+  "license": "MIT",
+  "main": "./dist/bundle.js",
+  "scripts": {
+    "paragraph:build": "webpack --mode production",
+    "build:dev": "webpack --mode development --watch"
+  },
+  "author": {
+    "name": "7polo"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "less": "^4.1.2",
+    "less-loader": "^7.3.0",
+    "raw-loader": "^4.0.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "throttle-debounce": "^4.0.1"
+  }
+}
