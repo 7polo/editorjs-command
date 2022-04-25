@@ -38,17 +38,17 @@ export class PopMode {
         }
         if (key === 'Escape') {
             this.hide();
+            this.stopEvent(event);
             return false;
         }
         if (key === 'Tab') {
-            event.returnValue = false;
-            event.preventDefault();
-            event.stopPropagation();
+            this.stopEvent(event);
             return true;
         }
 
         if (['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp'].indexOf(key) !== -1) {
             this.onArrowKey(key);
+            this.stopEvent(event);
             return true;
         }
 
@@ -58,9 +58,7 @@ export class PopMode {
                 this.transform(tool);
                 this.hide();
             }
-            event.returnValue = false;
-            event.preventDefault();
-            event.stopPropagation();
+            this.stopEvent(event);
             return true;
         }
 
@@ -69,6 +67,12 @@ export class PopMode {
             return true;
         }
         return false;
+    }
+
+    stopEvent(event) {
+        event.returnValue = false;
+        event.preventDefault();
+        event.stopPropagation();
     }
 
     render() {
