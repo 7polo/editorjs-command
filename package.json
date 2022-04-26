@@ -1,6 +1,6 @@
 {
   "name": "@7polo/editorjs-command",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "codex editor",
     "paragraph",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "./dist/bundle.js",
   "scripts": {
-    "paragraph:build": "webpack --mode production",
+    "command:build": "webpack --mode production",
     "build:dev": "webpack --mode development --watch"
   },
   "author": {

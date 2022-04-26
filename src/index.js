@@ -32,7 +32,7 @@ export default class Command {
         // 获取当前数据 和数据
         const text = block.holder.innerText;
         const key = event.key;
-        console.log(`handle: key=${key} , text=${text}`);
+        // console.log(`handle: key=${key} , text=${text}`);
         let consumed = false;
         for (let i = 0; i < this.modes.length; i++) {
             const mode = this.modes[i];
