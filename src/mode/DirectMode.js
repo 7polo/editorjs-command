@@ -63,7 +63,7 @@ export class DirectMode {
             try {
                 let matched = func(map.regex, text);
                 if (matched) {
-                    Object.assign(result, {match: true, block: {tool: tool, data: matched.data}});
+                    Object.assign(result, {match: true, block: {tool: tool, data: matched}});
                 }
                 return matched;
             } catch (e) {
@@ -72,6 +72,7 @@ export class DirectMode {
         });
 
         if (result.match) {
+            console.log(text);
             console.log(result);
             const newBlock = result.block;
             this.bridge.replaceBlock(newBlock.tool, newBlock.data);
