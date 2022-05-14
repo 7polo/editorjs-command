@@ -5,7 +5,6 @@ export class Bridge {
 
     bindEditor(editor) {
         this.editor = editor;
-        console.log("bind editor");
     }
 
     isReady() {
