@@ -11,20 +11,21 @@ const DEFAULT_MAPPING = {
         }
     },
     'delimiter': {
-        regex: /^---/g
+        regex: /^---/g,
+        create: true
     },
-    // 'code': {
-    //     regex: /^\/code/g
-    // },
-    // 'image': {
-    //     regex: /^\/img/g
-    // },
-    // 'Alert': {
-    //     regex: /^\/a/g
-    // },
-    // 'table': {
-    //     regex: /^\/t/g
-    // }
+    'code': {
+        regex: /^\/code/g
+    },
+    'image': {
+        regex: /^\/img/g
+    },
+    'Alert': {
+        regex: /^\/a/g
+    },
+    'table': {
+        regex: /^\/t/g
+    }
 };
 
 export class DirectMode {
@@ -50,10 +51,10 @@ export class DirectMode {
         text = text + event.key;
         const result = {match: false};
 
-        // todo 特殊字符过滤
         if (event.key === 'Backspace') {
             return result;
         }
+
         Object.keys(this.mapping).find(tool => {
             const map = this.mapping[tool];
             let func = map.matched;
@@ -63,7 +64,7 @@ export class DirectMode {
             try {
                 let matched = func(map.regex, text);
                 if (matched) {
-                    Object.assign(result, {match: true, block: {tool: tool, data: matched}});
+                    Object.assign(result, {create: !!map.create, match: true, block: {tool: tool, data: matched}});
                 }
                 return matched;
             } catch (e) {
@@ -72,10 +73,11 @@ export class DirectMode {
         });
 
         if (result.match) {
-            console.log(text);
-            console.log(result);
             const newBlock = result.block;
             this.bridge.replaceBlock(newBlock.tool, newBlock.data);
+            if (result.create) {
+                this.bridge.addBlock('paragraph')
+            }
         }
         return result.match;
     }

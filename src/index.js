@@ -12,7 +12,7 @@ export default class Command {
      */
     constructor(config={}) {
         const bridge = new Bridge();
-        this.modes = [new DirectMode({config, bridge}), new PopMode({config, bridge})];
+        this.modes = [new DirectMode({config, bridge})];
         this.bridge = bridge;
     }
 
@@ -32,7 +32,6 @@ export default class Command {
         // 获取当前数据 和数据
         const text = block.holder.innerText;
         const key = event.key;
-        // console.log(`handle: key=${key} , text=${text}`);
         let consumed = false;
         for (let i = 0; i < this.modes.length; i++) {
             const mode = this.modes[i];
@@ -48,6 +47,9 @@ export default class Command {
             }
         }
         // consumed === true 说明事件被消费了
+        if (consumed === true) {
+            event.returnValue = false
+        }
         return consumed;
     }
 

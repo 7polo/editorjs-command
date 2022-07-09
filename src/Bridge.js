@@ -20,8 +20,15 @@ export class Bridge {
     }
 
     replaceBlock(tool, data) {
-        this.editor.blocks.insert(tool, data, {}, this.editor.blocks.getCurrentBlockIndex(), true, true);
-        this.editor.caret.setToBlock(this.editor.blocks.getCurrentBlockIndex());
+        const index = this.editor.blocks.getCurrentBlockIndex()
+        this.editor.blocks.insert(tool, data, {}, index, true, true);
+        this.editor.caret.setToBlock(index);
+    }
+
+    addBlock(tool, data = {}, needToFocus = true) {
+        const index = this.editor.blocks.getCurrentBlockIndex() + 1
+        this.editor.blocks.insert(tool, data, {}, index, needToFocus, false);
+        this.editor.caret.setToBlock(index);
     }
 
     deleteCurrentBlock() {
