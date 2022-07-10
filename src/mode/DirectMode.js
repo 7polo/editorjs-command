@@ -52,7 +52,7 @@ export class DirectMode {
         const result = {match: false};
 
         if (event.key === 'Backspace') {
-            return result;
+            return result.match;
         }
 
         Object.keys(this.mapping).find(tool => {
