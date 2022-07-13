@@ -11,6 +11,15 @@ export class Bridge {
         return !!this.editor;
     }
 
+    isLastedBlock() {
+        const index = this.editor.blocks.getCurrentBlockIndex()
+        return this.editor.blocks.getBlockByIndex(index + 1) === undefined;
+    }
+
+    focusNextBlock() {
+        this.editor.caret.setToBlock(this.editor.blocks.getCurrentBlockIndex() + 1, 'end');
+    }
+
     addEventListener(el, event, call) {
         this.editor.listeners.on(el, event, call, false);
     }

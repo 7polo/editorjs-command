@@ -76,7 +76,11 @@ export class DirectMode {
             const newBlock = result.block;
             this.bridge.replaceBlock(newBlock.tool, newBlock.data);
             if (result.create) {
-                this.bridge.addBlock('paragraph')
+                if (this.bridge.isLastedBlock()) {
+                    this.bridge.addBlock('paragraph')
+                } else {
+                    this.bridge.focusNextBlock()
+                }
             }
         }
         return result.match;
