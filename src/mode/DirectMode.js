@@ -1,6 +1,6 @@
 const DEFAULT_MAPPING = {
     'header': {
-        regex: /^(#{1,6}) $/g,
+        regex: /^(#{1,4}) $/g,
         matched: (regex, text) => {
             const matched = text.match(regex);
             if (matched && matched.length > 0) {
